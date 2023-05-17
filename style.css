@@ -20,4 +20,28 @@
     margin-left: 18%;
     margin-top: 4%;
   }
-  
+
+button{
+
+    height: 200px;
+    width: 200px;
+    background-color: #F8B195;
+    border-color: #F8B195;
+    border-style: solid;
+
+}
+
+#buttons
+{
+    display : flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+#result
+{
+    color : #355C7D;
+    font-family: 'Open Sans', sans-serif;
+    
+}
