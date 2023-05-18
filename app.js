@@ -1,82 +1,113 @@
 
 
 
-const choices = ["Rock", "Paper", "Scissor"];
-
-function getComputerChoice(choices)
+function getComputerChoice()
 {
-    let index = Math.floor(Math.random() * choices.length);
-    return choices[index];
+    let compChoices = ["rock", "paper", "scissors"] 
+    let randomizeChoice = Math.floor(Math.random() * compChoices.length)  
+    return compChoices[randomizeChoice];
 }
+
 
 let playerSelection;
 let computerSelection;
 
-// function getChoice()
-// {
-//      let playerSelection = prompt("Enter the Player choice: ", "Rock").toUpperCase();
-//      let computerSelection = getComputerChoice(choices).toUpperCase(); 
-//      selections = [playerSelection, computerSelection];
-//      return selections;
-// }
-
 function playRound(pS, cS)
 {   
-    if(pS == "ROCK" && cS == "PAPER")
-    {
-        return "You Lose, Paper beats Rock";
+    if(pS == "ROCK")
+    {   
+        if(cS == "PAPER")
+            {return "You Lose, Paper beats Rock";}
+        else if(cS == "SCISSORS")
+            {return "You Win, Rock beats Paper"}
+        else{
+            return "Draw"
+        }
     }
-
-    else if(pS == "SCISSOR" && cS == "ROCK")
+    else if(pS == "SCISSORS")
     {
-        return "You Lose, Rock beats Scissor";
+        if(cS == "PAPER")
+        {return "You Win, Scissor beats paper";}
+        else if(cS == "ROCK")
+        {return "You Lose, Rock beats Scissor"}
+        else
+        {
+            return "Draw"
+        }    
     }
-    else if(pS == "PAPER" && cS == "SCISSOR")
+    else if(pS == "PAPER")
     {
-        return "You Lose, Scissor beats Paper";
-    }
-    else{
-        return "Draw :)"
+        if(cS == "SCISSORS")
+            {return "You Lose, Scissor beats Paper";}
+        else if(cS == "ROCK")
+            {return "You Win, Paper beats Rock"}
+        else
+        {
+            return "Draw"
+        }
     }
 }
 
-// function game(n)
-// {
-//     for(let i = 0; i<n; i++)
-//     {   
-//         selections = getChoice();
-//         console.log(`The Player selected: ${selections[0]}\nThe Computer selected: ${selections[1]} `);
-//         console.log(playRound(selections[0], selections[1]));
-//     }
-// }
-
-
-// game(5);    
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
-const scissor = document.getElementById("scissors");
+const scissors = document.getElementById("scissors");
 
 const result = document.getElementById("result");
+result.style.textAlign = "center";
+result.style.fontSize = "30px";
+result.style.marginTop = "50px"
 
 
-rock.addEventListener("click", function(){
-    playerSelection = "ROCK";
-    computerSelection = getComputerChoice(choices).toUpperCase();
-    console.log(`${playerSelection} ${computerSelection}`);
-})
+function play(x, y)
+{
+    return playRound(x.toUpperCase(), y.toUpperCase())
+}
 
-paper.addEventListener("click", function(){
-    playerSelection = "PAPER";
-    computerSelection = getComputerChoice(choices).toUpperCase();
+
+rock.onclick = function()
+{   
+    let comp = getComputerChoice();
+    result.textContent = play("rock", comp);
+    console.log(`Rock vs ${comp}`);
+}
+
+paper.onclick = function()
+{   
+    let comp = getComputerChoice();
+    result.textContent = play("paper", comp);
+    console.log(`paper vs ${comp}`);
+}
+
+scissors.onclick = function()
+{   
+    let comp = getComputerChoice();
+    result.textContent = play("scissors", comp);
+    console.log(`scissors vs ${comp}`);
+}
+
+
+// if(rock.addEventListener("click", function(){
+//     playerSelection = "ROCK";
+//     console.log(`${playerSelection} ${computerSelection}`);
+//     result.textContent = playRound(playerSelection, computerSelection);
+
+// }))
+
+// else if(paper.addEventListener("click", function(){
+//     playerSelection = "PAPER";
+//     // computerSelection = getComputerChoice(choices).toUpperCase();
+//     result.textContent = playRound(playerSelection, computerSelection);
+
     
-})
+// }))
 
-scissor.addEventListener("click", function(){
-    playerSelection = "SCISSOR";
-    computerSelection = getComputerChoice(choices).toUpperCase();
-    // console.log(playRound(playerSelection, computerSelection));
-    console.log(`${playerSelection} ${computerSelection}`);
-})
+// else(scissor.addEventListener("click", function(){
+//     playerSelection = "SCISSOR";
+//     // computerSelection = getComputerChoice(choices).toUpperCase();
+//     // console.log(playRound(playerSelection, computerSelection));
+//     console.log(`${playerSelection} ${computerSelection}`);
+//     result.textContent = playRound(playerSelection, computerSelection);
+// }))
 
 
 

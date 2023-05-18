@@ -25,9 +25,15 @@ button{
 
     height: 200px;
     width: 200px;
-    background-color: #F8B195;
+    /* background-color: #F8B195; */
     border-color: #F8B195;
     border-style: solid;
+    background-color: transparent;
+    /* border: 3px solid #00d7c3; */
+    border-radius: 50px;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    color: #00d7c3;
 
 }
 
@@ -37,7 +43,12 @@ button{
     flex-direction: row;
     justify-content: space-around;
     margin-top: 50px;
+    
 }
+button:hover {
+    box-shadow: 0 0 10px 0 #355C7D inset, 0 0 20px 1px #355C7D;
+    border: 3px solid #355C7D;
+  }
 
 #result
 {
